@@ -1,0 +1,43 @@
+*{
+   font-family:Arial;
+}
+.container{
+   height: 500px;
+   background: #ccc;
+   display:flex;
+   justify-content:space-around;
+   align-items: center;
+}
+.area-jogo{
+   width:450px;
+   height:450px;
+   border:1px solid black;
+   display:flex;
+   flex-direction:column;
+   justify-content:center;
+   align-items: center;
+   box-sizing: border-box;
+}
+.linha{
+   display:flex;
+   /* border:1px solid black; */
+}
+.casa{
+   width:130px;
+   height:130px;
+   /* background:#eee; */
+   margin:5px;
+}
+.linha:nth-child(even){
+   border-bottom: 5px solid black;
+   border-top: 5px solid black;
+}
+.casa:nth-child(even){
+   border-left: 5px solid black;
+   border-right: 5px solid black;
+}
+.identificador{
+   width:50px;
+   height:50px;
+   border:1px solid black;
+}
