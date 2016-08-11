@@ -1,4 +1,4 @@
-/* DEFININDO VARIÁVEIS */
+/* ------ DEFININDO VARIÁVEIS ------ */
 var casas        = ['casa-1','casa-2','casa-3','casa-4','casa-5','casa-6','casa-7','casa-8','casa-9'];
 var casasUsuario = [];
 var casasPc      = [];
@@ -6,7 +6,7 @@ var casasPc      = [];
 var corUsuario = "";
 var corPC      = "";
 
-/* INICIANDO O JOGO */
+/* ------ INICIANDO O JOGO ------ */
 $("#iniciarJogo").click(function(){
    if($("#escolheu").val() == 'nao'){
       if($("#corUsuario").val() === $("#corPc").val()){
@@ -20,19 +20,21 @@ $("#iniciarJogo").click(function(){
       alert("O JOGO JÁ ESTÁ ACONTECENDO!");
    }
 });
-/* REINICIAR JOGO */
+/*  ------ REINICIAR JOGO ------ */
 $("#reiniciarJogo").click(function(){
+   /* RESETANDO VARIÁVEIS */
    casas = [];
    casas        = ['casa-1','casa-2','casa-3','casa-4','casa-5','casa-6','casa-7','casa-8','casa-9'];
    casasUsuario = [];
    casasPc      = [];
-
+   /* LIMPANDO AS CASAS MARCADAS */
    $(".casa").css("background","");
+   /* DEFININDO QUE O JOGO NÃO ACABOU */
    $("#acabou").val("nao");
 
 });
 
-/* JOGANDO */
+/* ------ JOGANDO ------ */
 $(".casa").click(function(){
    /* AÇÕES SÓ ACONTECEM SE O USUARIO ESCOLHEU AS CORES E O JOGO NAO ACABOU */
    if($("#escolheu").val() == "sim" && $("#acabou").val() == "nao"){
@@ -47,7 +49,7 @@ $(".casa").click(function(){
       alert("O JOGO ACABOU OU NAO FOI INICIADO");
    }
 });
-/* FUNÇÃO DA AÇÃO DO USUÁRIO */
+/* ------ FUNÇÃO DA AÇÃO DO USUÁRIO ------ */
 function acaoUsuario(casaClicada){
    var indiceCasaClicada   = casas.indexOf(casaClicada.attr('id'));
    /* VERIFICANDO SE A CASA CLICADA NÃO EXISTE NAS CASAS DISPONIVEIS (SE NÃO EXISTE É PQ JA FOI MARCADA) */
@@ -64,7 +66,7 @@ function acaoUsuario(casaClicada){
    casas.splice(indiceCasaClicada,1);
    return true;
 }
-/* FUNÇÃO DA AÇÃO DO PC */
+/*  ------ FUNÇÃO DA AÇÃO DO PC ------ */
 function acaoPc(){
    /* VERIFICANDO QUAIS CASAS ESTAO LIVRES */
    var qtdCasasDisponiveis = casas.length;
@@ -80,7 +82,7 @@ function acaoPc(){
    verifica(casasPc,"pc");
 }
 
-/* FUNÇÃO PARA VERIFICAR SE GANHOU OU NÃO */
+/* ------ FUNÇÃO PARA VERIFICAR SE GANHOU OU NÃO ------ */
 function verifica(arrayCasas,jogador){
    /* DEFINIDO A MENSAGEM DE ACORDO COM O JOGADOR */
    var msg = "VOCE PERDEU";
