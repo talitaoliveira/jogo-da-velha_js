@@ -34,9 +34,12 @@ $("#reiniciarJogo").click(function(){
 
 /* JOGANDO */
 $(".casa").click(function(){
+   /* AÇÕES SÓ ACONTECEM SE O USUARIO ESCOLHEU AS CORES E O JOGO NAO ACABOU */
    if($("#escolheu").val() == "sim" && $("#acabou").val() == "nao"){
       if(acaoUsuario($(this))){
+         /* SE CONSEGUIU REALIZAR A ACAO DO USUARIO FAZ A VERIFICAÇÃO PARA VER SE GANHOU*/
          if(!verifica(casasUsuario,"usuario")){
+            /* SE RETORNAR FALSE (NÃO GANHOU), FAZ A AÇÃO DO PC */
             acaoPc(); 
          }
       }
