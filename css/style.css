@@ -7,7 +7,29 @@
    display:flex;
    justify-content:space-around;
    align-items: center;
+   position:relative;
 }
+.info{
+   position:absolute;
+   display:flex;
+   flex-direction:column;
+   justify-content:space-around;
+   align-items: center;
+   box-shadow: 5px 5px 10px #888;
+}
+.info#inicio-jogo{
+   height:400px;
+   width:400px;
+   background:#ccf;
+   visibility:hidden;
+}
+.info#mensagem-jogo{
+   background:#eee;
+   width:350px;
+   height:300px;
+   visibility:hidden;
+}
+
 .area-jogo{
    width:450px;
    height:450px;

@@ -6,19 +6,23 @@
 </head>
 <body>
 	<div class="container">
-		<div>
-			<h1>Jogo da Velha</h1>
-			<div>
+		<div class="info" id="inicio-jogo">
+			<!--  <h1>Jogo da Velha</h1> -->
+			<div class="cores">
 				Escolha a cor do seu marcador:<br>
 				<input type="color" name="" id="corUsuario"><br><br>
 				Escolha a cor do marcador do adversário:<br>
 				<input type="color" name="" id="corPc">
 			</div>
-			<input type="button" value="INICIAR JOGO" id="iniciarJogo">
+			<div class="botoes-acao">
+				<input type="button" value="INICIAR JOGO" id="iniciarJogo">
+				<input id="escolheu" value="nao" type="hidden"/>
+				<input id="acabou" value="nao" type="hidden"/>
+			</div>
+		</div>
+		<div class="info" id="mensagem-jogo">
+			voce perdeu
 			<input type="button" value="REINICIAR JOGO" id="reiniciarJogo">
-			<br>
-			<input id="escolheu" value="nao" type="hidden"/>
-      <input id="acabou" value="nao" type="hidden"/>
 		</div>
 		<div class="area-jogo">
 			<div class="linha">
