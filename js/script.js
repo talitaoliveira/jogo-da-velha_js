@@ -50,6 +50,7 @@ $(".casa").click(function(){
 /* FUNÇÃO DA AÇÃO DO USUÁRIO */
 function acaoUsuario(casaClicada){
    var indiceCasaClicada   = casas.indexOf(casaClicada.attr('id'));
+   /* VERIFICANDO SE A CASA CLICADA NÃO EXISTE NAS CASAS DISPONIVEIS (SE NÃO EXISTE É PQ JA FOI MARCADA) */
    if(indiceCasaClicada    == -1){
       alert("Casa já foi marcada");
       return false;
