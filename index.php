@@ -18,6 +18,7 @@
 			<input type="button" value="REINICIAR JOGO" id="reiniciarJogo">
 			<br>
 			<input id="escolheu" value="nao"/>
+      <input id="acabou" value="nao"/>
 		</div>
 		<div class="area-jogo">
 			<div class="linha">

@@ -1,4 +1,3 @@
-
 var casas        = ['casa-1','casa-2','casa-3','casa-4','casa-5','casa-6','casa-7','casa-8','casa-9'];
 var casasUsuario = [];
 var casasPc      = [];
@@ -13,7 +12,7 @@ $("#iniciarJogo").click(function(){
          alert("ESCOLHA CORES DIFERENTES!");
       }else{
          corUsuario = $("#corUsuario").val();
-         corPC      = $("#corPc").val();
+         corPC = $("#corPc").val();
          $("#escolheu").val("sim");
       }
    }else{
@@ -22,24 +21,26 @@ $("#iniciarJogo").click(function(){
 });
 /* REINICIAR JOGO */
 $("#reiniciarJogo").click(function(){
+   casas = [];
    casas        = ['casa-1','casa-2','casa-3','casa-4','casa-5','casa-6','casa-7','casa-8','casa-9'];
    casasUsuario = [];
    casasPc      = [];
 
-   corUsuario = "";
-   corPC      = "";
-
-
+   $(".casa").css("background","");
+   $("#acabou").val("nao");
 
 });
 
-
 /* JOGANDO */
 $(".casa").click(function(){
-   if($("#escolheu").val() == "sim"){
+   if($("#escolheu").val() == "sim" && $("#acabou").val() == "nao"){
       if(acaoUsuario($(this))){
-         acaoPc();
+         if(!verifica(casasUsuario,"usuario")){
+            acaoPc(); 
+         }
       }
+   }else{
+      alert("O JOGO ACABOU OU NAO FOI INICIADO");
    }
 });
 
@@ -55,10 +56,6 @@ function acaoUsuario(casaClicada){
    /* INSERINDO NO ARRAY DE CASAS CLICADAS DO USUÁRIO */
    casasUsuario.push(casas[indiceCasaClicada]);
    casas.splice(indiceCasaClicada,1);
-
-   console.log(casasUsuario);
-
-   console.log(casas);
    return true;
 }
 
@@ -68,6 +65,56 @@ function acaoPc(){
    $("#"+casas[casaAleatoria]).css("background",corPC);
    casasPc.push(casas[casaAleatoria]);
    casas.splice(casaAleatoria,1);
+   verifica(casasPc,"pc")
+}
+
+function verifica(arrayCasas,jogador){
+   var msg = "VOCE PERDEU";
+   if(jogador == 'usuario'){
+      msg = "VOCÊ GANHOU!";
+   }
+   if(arrayCasas.indexOf('casa-1') != -1 && arrayCasas.indexOf('casa-2') != -1 && 
+      arrayCasas.indexOf('casa-3') != -1){
+      alert(msg);
+   $("#acabou").val("sim");
+   return true;
+}else if(arrayCasas.indexOf('casa-4') != -1 && arrayCasas.indexOf('casa-5') != -1 && 
+   arrayCasas.indexOf('casa-6') != -1){
+   alert(msg);
+   $("#acabou").val("sim");
+   return true;
+}else if(arrayCasas.indexOf('casa-7') != -1 && arrayCasas.indexOf('casa-8') != -1 && 
+   arrayCasas.indexOf('casa-9') != -1){
+   alert(msg);
+   $("#acabou").val("sim");
+   return true;
+}else if(arrayCasas.indexOf('casa-1') != -1 && arrayCasas.indexOf('casa-4') != -1 && 
+   arrayCasas.indexOf('casa-7') != -1){
+   alert(msg);
+   $("#acabou").val("sim");
+   return true;
+}else if(arrayCasas.indexOf('casa-2') != -1 && arrayCasas.indexOf('casa-5') != -1 && 
+   arrayCasas.indexOf('casa-8') != -1){
+   alert(msg);
+   $("#acabou").val("sim");
+   return true;
+}else if(arrayCasas.indexOf('casa-3') != -1 && arrayCasas.indexOf('casa-6') != -1 && 
+   arrayCasas.indexOf('casa-9') != -1){
+   alert(msg);
+   $("#acabou").val("sim");
+   return true;
+}else if(arrayCasas.indexOf('casa-1') != -1 && arrayCasas.indexOf('casa-5') != -1 && 
+   arrayCasas.indexOf('casa-9') != -1){
+   alert(msg);
+   $("#acabou").val("sim");
+   return true;
+}else if(arrayCasas.indexOf('casa-3') != -1 && arrayCasas.indexOf('casa-5') != -1 && 
+   arrayCasas.indexOf('casa-7') != -1){
+   alert(msg);
+   $("#acabou").val("sim");
+   return true;
+}
+return false;
 }
 
 
