@@ -15,6 +15,7 @@ $("#iniciarJogo").click(function(){
          corUsuario = $("#corUsuario").val();
          corPC = $("#corPc").val();
          $("#escolheu").val("sim");
+        $("#inicio-jogo").css("visibility","hidden");
       }
    }else{
       alert("O JOGO JÁ ESTÁ ACONTECENDO!");
