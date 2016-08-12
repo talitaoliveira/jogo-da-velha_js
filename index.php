@@ -7,7 +7,7 @@
 <body>
 	<div class="container">
 		<div class="info" id="inicio-jogo">
-			<!--  <h1>Jogo da Velha</h1> -->
+			 <h1>Jogo da Velha</h1>
 			<div class="cores">
 				Escolha a cor do seu marcador:<br>
 				<input type="color" name="" id="corUsuario"><br><br>
@@ -18,11 +18,16 @@
 				<input type="button" value="INICIAR JOGO" id="iniciarJogo">
 				<input id="escolheu" value="nao" type="hidden"/>
 				<input id="acabou" value="nao" type="hidden"/>
+				<input id="alguem-ganhou" value="nao" type="hidden"/>
 			</div>
 		</div>
 		<div class="info" id="mensagem-jogo">
-			voce perdeu
+			<span id="msg-status"></span>
 			<input type="button" value="REINICIAR JOGO" id="reiniciarJogo">
+		</div>
+		<div class="pontuacao">
+			<div>VOCÊ <br><span id="ponto-usuario">0</span></div>
+			<div>PC <br><span id="ponto-pc">0</span></div>
 		</div>
 		<div class="area-jogo">
 			<div class="linha">

@@ -6,6 +6,9 @@ var casasPc      = [];
 var corUsuario = "";
 var corPC      = "";
 
+var pontosUsuario = 0;
+var pontosPc      = 0;
+
 /* ------ INICIANDO O JOGO ------ */
 $("#iniciarJogo").click(function(){
    if($("#escolheu").val() == 'nao'){
@@ -32,24 +35,39 @@ $("#reiniciarJogo").click(function(){
    $(".casa").css("background","");
    /* DEFININDO QUE O JOGO NÃO ACABOU */
    $("#acabou").val("nao");
+   $("#alguem-ganhou").val("nao");
+   $("#mensagem-jogo").css("visibility","hidden");
 
 });
 
 /* ------ JOGANDO ------ */
 $(".casa").click(function(){
    /* AÇÕES SÓ ACONTECEM SE O USUARIO ESCOLHEU AS CORES E O JOGO NAO ACABOU */
-   if($("#escolheu").val() == "sim" && $("#acabou").val() == "nao"){
-      if(acaoUsuario($(this))){
-         /* SE CONSEGUIU REALIZAR A ACAO DO USUARIO FAZ A VERIFICAÇÃO PARA VER SE GANHOU*/
-         if(!verifica(casasUsuario,"usuario")){
-            /* SE RETORNAR FALSE (NÃO GANHOU), FAZ A AÇÃO DO PC */
-            acaoPc(); 
+   if($("#escolheu").val() == "sim"){
+      if($("#acabou").val() == "sim"){
+         alert("O JOGO ACABOU");
+      }else{
+         if(acaoUsuario($(this))){
+            /* SE CONSEGUIU REALIZAR A ACAO DO USUARIO FAZ A VERIFICAÇÃO PARA VER SE GANHOU*/
+            if(!verifica(casasUsuario,"usuario")){
+               /* SE RETORNAR FALSE (NÃO GANHOU), FAZ A AÇÃO DO PC */
+               acaoPc();
+            }else{
+               pontosUsuario++;
+               $("#ponto-usuario").html(pontosUsuario);
+            }
+         }
+         if($("#alguem-ganhou").val()=='nao' && casasUsuario.length == 5){
+            $("#mensagem-jogo").css("visibility","visible");
+            $("#msg-status").html("O JOGO ACABOU SEM MAIS MOVIMENTOS");
+            $("#acabou").val("sim");
          }
       }
    }else{
-      alert("O JOGO ACABOU OU NAO FOI INICIADO");
+      alert("O JOGO NAO FOI INICIADO");
    }
 });
+
 /* ------ FUNÇÃO DA AÇÃO DO USUÁRIO ------ */
 function acaoUsuario(casaClicada){
    var indiceCasaClicada   = casas.indexOf(casaClicada.attr('id'));
@@ -80,48 +98,69 @@ function acaoPc(){
    /* RETIRANDO A CASA PINTADA DO ARRAY DE CASAS DISPONIVEIS */
    casas.splice(casaAleatoria,1);
    /* VERIFICAÇÃO SE GANHOU */
-   verifica(casasPc,"pc");
+   if(verifica(casasPc,"pc")){
+      pontosPc++;
+      $("#ponto-pc").html(pontosPc);
+   }
 }
 
 /* ------ FUNÇÃO PARA VERIFICAR SE GANHOU OU NÃO ------ */
 function verifica(arrayCasas,jogador){
    /* DEFINIDO A MENSAGEM DE ACORDO COM O JOGADOR */
-   var msg = "VOCE PERDEU";
+   var msg = "";
    if(jogador == 'usuario'){
       msg = "VOCÊ GANHOU!";
+   }else{
+      msg = "VOCE PERDEU";
    }
    /* VERIFICAÇÕES DAS CASAS DO JOGADOR PARA VER SE ESTÁ EM ALGUM CASO QUE GANHA */
    if(arrayCasas.indexOf('casa-1') != -1 && arrayCasas.indexOf('casa-2') != -1 && arrayCasas.indexOf('casa-3') != -1){
-      alert(msg);
+      $("#mensagem-jogo").css("visibility","visible");
+      $("#msg-status").html(msg);
       $("#acabou").val("sim");
+      $("#alguem-ganhou").val("sim");
       return true;
    }else if(arrayCasas.indexOf('casa-4') != -1 && arrayCasas.indexOf('casa-5') != -1 && arrayCasas.indexOf('casa-6') != -1){
-      alert(msg);
+      $("#mensagem-jogo").css("visibility","visible");
+      $("#msg-status").html(msg);
       $("#acabou").val("sim");
+      $("#alguem-ganhou").val("sim");
       return true;
    }else if(arrayCasas.indexOf('casa-7') != -1 && arrayCasas.indexOf('casa-8') != -1 && arrayCasas.indexOf('casa-9') != -1){
-      alert(msg);
+      $("#mensagem-jogo").css("visibility","visible");
+      $("#msg-status").html(msg);
       $("#acabou").val("sim");
+      $("#alguem-ganhou").val("sim");
       return true;
    }else if(arrayCasas.indexOf('casa-1') != -1 && arrayCasas.indexOf('casa-4') != -1 && arrayCasas.indexOf('casa-7') != -1){
-      alert(msg);
+      $("#mensagem-jogo").css("visibility","visible");
+      $("#msg-status").html(msg);
       $("#acabou").val("sim");
+      $("#alguem-ganhou").val("sim");
       return true;
    }else if(arrayCasas.indexOf('casa-2') != -1 && arrayCasas.indexOf('casa-5') != -1 && arrayCasas.indexOf('casa-8') != -1){
-      alert(msg);
+      $("#mensagem-jogo").css("visibility","visible");
+      $("#msg-status").html(msg);
       $("#acabou").val("sim");
+      $("#alguem-ganhou").val("sim");
       return true;
    }else if(arrayCasas.indexOf('casa-3') != -1 && arrayCasas.indexOf('casa-6') != -1 && arrayCasas.indexOf('casa-9') != -1){
-      alert(msg);
+      $("#mensagem-jogo").css("visibility","visible");
+      $("#msg-status").html(msg);
       $("#acabou").val("sim");
+      $("#alguem-ganhou").val("sim");
       return true;
    }else if(arrayCasas.indexOf('casa-1') != -1 && arrayCasas.indexOf('casa-5') != -1 && arrayCasas.indexOf('casa-9') != -1){
-      alert(msg);
+      $("#mensagem-jogo").css("visibility","visible");
+      $("#msg-status").html(msg);
       $("#acabou").val("sim");
+      $("#alguem-ganhou").val("sim");
       return true;
    }else if(arrayCasas.indexOf('casa-3') != -1 && arrayCasas.indexOf('casa-5') != -1 && arrayCasas.indexOf('casa-7') != -1){
-      alert(msg);
+      $("#mensagem-jogo").css("visibility","visible");
+      $("#msg-status").html(msg);
       $("#acabou").val("sim");
+      $("#alguem-ganhou").val("sim");
       return true;
    }
    return false;

@@ -3,7 +3,8 @@
 }
 .container{
    height: 500px;
-   background: #ccc;
+   width:700px;
+   background: #EEE;
    display:flex;
    justify-content:space-around;
    align-items: center;
@@ -16,20 +17,35 @@
    justify-content:space-around;
    align-items: center;
    box-shadow: 5px 5px 10px #888;
+   top:50px;
+   left:100px;
 }
-.info#inicio-jogo{
+#inicio-jogo{
    height:400px;
    width:400px;
    background:#ccf;
-   visibility:hidden;
+   /*visibility:hidden;*/
 }
-.info#mensagem-jogo{
+#mensagem-jogo{
    background:#eee;
    width:350px;
    height:300px;
    visibility:hidden;
+   font-size:30px;
+   text-align: center;
 }
-
+.pontuacao{
+   display:flex;
+   width:200px;
+   height:100px;
+   border:1px solid black;
+   font-size:30px;
+}
+.pontuacao div{
+   border:1px solid black;
+   flex-grow:1;
+   text-align: center;
+}
 .area-jogo{
    width:450px;
    height:450px;
