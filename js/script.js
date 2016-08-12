@@ -111,7 +111,7 @@ function verifica(arrayCasas,jogador){
    if(jogador == 'usuario'){
       msg = "VOCÊ GANHOU!";
    }else{
-      msg = "VOCE PERDEU";
+      msg = "VOCÊ PERDEU";
    }
    /* VERIFICAÇÕES DAS CASAS DO JOGADOR PARA VER SE ESTÁ EM ALGUM CASO QUE GANHA */
    if(arrayCasas.indexOf('casa-1') != -1 && arrayCasas.indexOf('casa-2') != -1 && arrayCasas.indexOf('casa-3') != -1){

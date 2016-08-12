@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+	<meta charset="utf-8">
 	<title>Jogo da Velha</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -49,6 +50,6 @@
 	</div>
 
 	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/script.js" charset="utf-8"></script>
 </body>
 </html>
